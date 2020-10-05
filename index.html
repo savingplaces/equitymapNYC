@@ -1,0 +1,631 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+      
+<title>Exploring Neighborhood Change</title>
+      
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/style.css"/>
+ 
+  </head>
+
+  <body>
+    
+    <div id="viewDiv"></div>
+
+      
+    <div id="popup-container">
+      <a class="close"><i class="fas fa-times" id="closeSplash" style="font-size:16px"></i></a>
+        <div id="popup-window">
+            <div class="dotsSplash"><img src="img/Equity_Study_Dots_Splash.png" style="height:50px;"></div>
+            <div class="splash-header">Exploring Neighborhood Change</div>
+            <div class="splash-sub-header">New York, New York</div>
+            <section class="tabs-menu">
+               <!-- Tab navigation -->
+               <div class="tablist-reponsiveScroll">
+                  <ul role="tablist">
+                     <li role="presentation">
+                        <a href="#tabs-link-1" role="tab" aria-selected="true">About the Map</a>
+                     </li>
+                     <li role="presentation">
+                        <a href="#tabs-link-2" role="tab" aria-selected="false">Research</a>
+                     </li>
+                     <li role="presentation">
+                        <a href="#tabs-link-3" role="tab" aria-selected="false">How to Use the Map</a>
+                     </li>
+                     <li role="presentation">
+                        <a href="#tabs-link-4" role="tab" aria-selected="false">Map Data</a>
+                     </li>
+                  </ul>
+               </div>
+               <!-- Tab panel content -->
+               <div class="tab-content">
+                  <section id="tabs-link-1" role="tabpanel" aria-hidden="false">
+                        <div class="splash-para-title">About the Map</div>
+                      <p class="splash-para">The National Trust for Historic Preservation developed the <i>Exploring Neighborhood Change</i> mapping series for 10 cities as a part of an initiative of the <a href="https://savingplaces.org/african-american-cultural-heritage" target="_blank">African American Cultural Heritage Action Fund</a>. The mapping series is designed to complement a written report entitled <i><a href="https://savingplaces.org/" target="_blank">Preserving African American Places: Growing Preservation’s Potential as a Path for Equity</a></i>, which explores the historical and present day context of African American neighborhoods to develop effective preservation-based strategies that promote justice, inclusion, and equity in our movement today.</p><p class="splash-para">This initiative is focused on exploring the intersection of preservation and equitable development in African American neighborhoods in 10 cities where the National Trust is actively engaged and holds longstanding partnerships. While the focus of this initial exploration is on African American neighborhoods, we believe the lessons and insights gleaned can apply to other neighborhoods of diverse racial and cultural identity. This mapping tool helps readers of the report visualize census tracts in the 10 cities that have had predominantly African American populations for the last fifty years. The mapping tool offers a snapshot of demographic change between 2009 and 2016 as well as a variety of contextual data layers including transit, presence of institutions, preservation activity, development activity, historical redlining data, among others, to support broader understanding of these neighborhoods where change is taking place.</p>
+                        <p class="splash-para">This map is best used in close reference to the report, and when readers conduct their own supplemental research and/or bring their own knowledge of these communities to bear. Alone, the data presented does not offer insight into why these changes are occurring, but it does serve as a starting point to help readers visualize and explore the complex range of factors that influence neighborhood change. Examples of map uses include:</p>
+                        <ul>
+                          <li class="about-list">Overlaying historic neighborhood risk assessment maps (also known as “redline” maps) created in the 1930s by the Home Owners’ Loan Corporation with present day data layers to explore spatial trends in residential and economic segregation, among other areas.</li>
+                          <li class="about-list">Exploring changes in population, median income, and housing value between 2009 – 2016 at the census tract level. </li>
+                          <li class="about-list">Visualizing neighborhood characteristics, preservation activity, development activity, and zoning data to identify gaps and inform local strategies to strengthen these communities.</li>
+                        </ul>
+                        <p class="splash-para">The National Trust will continue to work with practitioners and residents of study cities to customize the Exploring Neighborhood Change mapping series to reflect local circumstances that will help advance our understanding of neighborhood change and the factors that drive it.</p>
+                        <p class="splash-para">The <a href="https://www.fordfoundation.org/" target="_blank">Ford Foundation</a> and the <a href="https://www.jpbfoundation.org/" target="_blank">JPB Foundation</a> provided the National Trust for Historic Preservation’s African American Cultural Heritage Action Fund with the generous funding to work on this mapping series and the broader campaign.</p>
+                  </section>
+                  <section id="tabs-link-2" role="tabpanel" aria-hidden="true">
+                        <div class="splash-para-title">About the Research</div>
+                        <p class="splash-para">Since 2018, the National Trust’s African American Cultural Heritage Action Fund has conducted ongoing research into the challenges and opportunities of preservation in the context of neighborhood change, and the multidimensional and intersectional issues that impact our communities today. From the start, this research was intended to be shared, discussed, and refined collaboratively. To that end, this discussion reflects on the structural barriers within the preservation field and beyond, and identifying preservation-based strategies for equitable development with respect to the historical and present-day context of African American neighborhoods, along with the implications this history and context has for preserving place and African American cultural heritage.</p>
+                      <p class="splash-para">The initial report, which can be accessed <a href="https://www.savingplaces.org/" target="_blank">here</a>, is not a definitive research study or a comprehensive analysis. Instead, it seeks to elevate emerging ideas, research, observations, and questions on this critically important issue, to catalyze meaningful dialogue and collaboration across the national preservation movement. It is intended as a starting point to understand the role preservation and cultural heritage can play in fostering equitable growth in our communities. New research and practices are continually emerging. We have synthesized information from advisors, partners, and stakeholders, and conducted scans of prevailing research and available data focusing on 10 cities the National Trust is currently engaged in or has longstanding partnerships in, to serve as a resource for the preservation field and allied disciplines.</p>
+                  </section>
+                  <section id="tabs-link-3" role="tabpanel" aria-hidden="true">
+                        <div class="splash-para-title">How to Use the Map</div>
+                        <p class="splash-para">When the map application loads the user will be presented with the map centered on the focus city and the application’s primary control panel located on the left side of the screen. The primary control panel enables users to turn data layers on and off, use data filters, perform searches and change layer opacity. Popups windows for datasets that are clicked on will appear on the screen’s right side. Zoom controls are in the bottom right corner. If the user needs to load this tutorial screen again it can be accessed by clicking on the ‘About the Map’ text in the top right corner.</p>
+                        <table style='border:0px solid; border-collapse:collapse; width:100%'><tbody><tr><td align='center' style='border: 0px solid; padding-left: 6px;' width='10%'><font size='2'><b><img src="img\mainscreen.PNG" style="width:95%"></b></font></td></tr></tbody></table>
+                        <p class="splash-para">Sections below detail the use of the map’s primary control panel, how to access popup window information as well as information on future updates to datasets and tools. </p>
+                        <hr class="splashHr">
+                        <div class="splash-para-title">Using the Map Controls</div>
+                        <table id="largeScale">
+                            <tbody>
+                                <tr>
+                                <td width='30%'><img class="tutlistpic" src="img\mapcontrols.PNG"></td><td width='3%' style='vertical-align: top'><div class="splash-para-title">1.</div></td>
+                                <td  width='65%' class="tutlisttext"><p class="splash-para">At the top of the primary map control panel are the map’s primary datasets which are derived from U.S. Census Bureau data and show changes – at the census tract level - in population, housing and income between the years 2009 and 2016. Also featured are areas that have been predominantly African American for the past 50 years.</p>
+                                <p class="splash-para">Click on a switch to activate a layer. When a layer is activated the switch becomes orange and a legend item will also appear below.</p></td>
+                                </tr>
+                                <tr>
+                                <td width='30%'><img class="tutlistpic" src="img\mapcontrolstwo.PNG"></td><td width='3%' style='vertical-align: top'><div class="splash-para-title">2.</div></td>
+                                <td  width='65%' class="tutlisttext"><p class="splash-para">Additional context map layers are located below the census tract layers and are grouped by city, development, designation, and historic layers. To access these layer groups, click on the group name and the individual layers will appear below.</p>
+                                <p class="splash-para">Many of the context layers have a filter or search capability. If the layer can be searched or filtered a dialog box will appear below when the layer is turned on.</p>
+                                <p class="splash-para">To answer in-app questions about individual layers the user can also hover over the question mark icon to the right of each layer for a short layer description.</p></td>    
+                                </tr>
+                                <tr>
+                                <td width='30%'><img class="tutlistpic" src="img\mapcontrolsthree.PNG"></td><td width='3%' style='vertical-align: top'><div class="splash-para-title">3.</div></td>
+                                <td  width='65%' class="tutlisttext"><p class="splash-para">Two additional tools are located at the bottom of the main control panel. The layer opacity tool enables the user to adjust the opacity any map layer. To use, choose a layer from the drop-down list and then adjust opacity with the slider. To reset layer opacity, press the ‘Reset’ button.</p>
+                                <p class="splash-para">Specific addresses can also be search for using the ‘Find an Address’ tool. Enter an address and the app will zoom to it.</p></td>
+                                </tr>    
+                            </tbody>
+                        </table>
+                        <table id="smallScale">
+                            <tbody>
+                                <tr>
+                                    <td align='center' colspan="2"><img class="tutlistpic" src="img\mapcontrols.PNG"></td>
+                                </tr>
+                                <tr>
+                                    <td width='3%' style='vertical-align: top'><div class="splash-para-title">1.</div></td>
+                                    <td  width='65%' class="tutlisttext"><p class="splash-para">At the top of the primary map control panel are the map’s primary datasets which are derived from U.S. Census Bureau data and show changes – at the census tract level - in population, housing and income between the years 2009 and 2016. Also featured are areas that have been predominantly African American for the past 50 years.</p>
+                                    <p class="splash-para">Click on a switch to activate a layer. When a layer is activated the switch becomes orange and a legend item will also appear below.</p></td>
+                                </tr>
+                                <tr>
+                                    <td align='center' colspan="2"><img class="tutlistpic" src="img\mapcontrolstwo.PNG"></td>
+                                </tr>
+                                <tr>
+                                    <td width='3%' style='vertical-align: top'><div class="splash-para-title">2.</div></td>
+                                    <td  width='65%' class="tutlisttext"><p class="splash-para">Additional context map layers are located below the census tract layers and are grouped by city, development, designation, and historic layers. To access these layer groups, click on the group name and the individual layers will appear below.</p>
+                                    <p class="splash-para">Many of the context layers have a filter or search capability. If the layer can be searched or filtered a dialog box will appear below when the layer is turned on.</p>
+                                    <p class="splash-para">To answer in-app questions about individual layers the user can also hover over the question mark icon to the right of each layer for a short layer description.</p></td>
+                                </tr>
+                                <tr>
+                                    <td align='center' colspan="2"><img class="tutlistpic" src="img\mapcontrolsthree.PNG"></td>
+                                </tr>
+                                <tr>
+                                    <td width='3%' style='vertical-align: top'><div class="splash-para-title">3.</div></td>
+                                    <td  width='65%' class="tutlisttext"><p class="splash-para">Two additional tools are located at the bottom of the main control panel. The layer opacity tool enables the user to adjust the opacity any map layer. To use, choose a layer from the drop-down list and then adjust opacity with the slider. To reset layer opacity, press the ‘Reset’ button.</p>
+                                    <p class="splash-para">Specific addresses can also be search for using the ‘Find an Address’ tool. Enter an address and the app will zoom to it.</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="splashHr">
+                        <div class="splash-para-title">Using Map Popups</div>
+                        <table id="largeScale">
+                            <tbody>
+                                <tr>
+                                <td width='30%'><img class="tutlistpic" src="img\popupone.PNG"></td><td width='3%' style='vertical-align: top'><div class="splash-para-title">1.</div></td>
+                                <td  width='65%' class="tutlisttext"><p class="splash-para">A popup can be activated by clicking on features in almost every layer. Each layer’s popup is slightly different and will contain a differing amount of information. Primary census tract layers contain information about changes in population groups, housing types and costs, as well as changes in income across groups.</p>
+                                <p class="splash-para">Percentage changes are indicated by yellow (increase) and blue (decrease) arrows. Some layers also contain links to websites that contain additional information. Outside links are indicated by light blue text.</p></td>
+                                </tr>
+                                <tr>
+                                <td width='30%'><img class="tutlistpic" src="img\popuptwo.PNG"></td><td width='3%' style='vertical-align: top'><div class="splash-para-title">2.</div></td>
+                                <td  width='65%' class="tutlisttext"><p class="splash-para">Population and income census tract layers contain additional charts about population and income changes. Scroll to the bottom of the popup window when accessing data from those layers.</p>
+                                <p class="splash-para">Hover over the vertical bars for a tooltip with information. Individual year data can be isolated by clicking on the years at the top of the chart.</p></td>
+                                </tr>    
+                            </tbody>
+                        </table>
+                        <table id="smallScale">
+                            <tbody>
+                                <tr>
+                                    <td align='center' colspan="2"><img class="tutlistpic" src="img\popupone.PNG"></td>
+                                </tr>
+                                <tr>
+                                    <td width='3%' style='vertical-align: top'><div class="splash-para-title">1.</div></td>
+                                    <td  width='65%' class="tutlisttext"><p class="splash-para">A popup can be activated by clicking on features in almost every layer. Each layer’s popup is slightly different and will contain a differing amount of information. Primary census tract layers contain information about changes in population groups, housing types and costs, as well as changes in income across groups.</p>
+                                    <p class="splash-para">Percentage changes are indicated by yellow (increase) and blue (decrease) arrows. Some layers also contain links to websites that contain additional information. Outside links are indicated by light blue text.</p></td>
+                                </tr>
+                                <tr>
+                                    <td align='center' colspan="2"><img class="tutlistpic" src="img\popuptwo.PNG"></td>
+                                </tr>
+                                <tr>
+                                    <td width='3%' style='vertical-align: top'><div class="splash-para-title">2.</div></td>
+                                    <td  width='65%' class="tutlisttext"><p class="splash-para">Population and income census tract layers contain additional charts about population and income changes. Scroll to the bottom of the popup window when accessing data from those layers.</p>
+                                    <p class="splash-para">Hover over the vertical bars for a tooltip with information. Individual year data can be isolated by clicking on the years at the top of the chart.</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="splash-para">The National Trust envisions that, overtime, the Exploring Neighborhood Change map will be updated with additional city-specific layers or updated versions of layers that currently in the application. When updates are made the changes will be indicated within the app’s ‘About the Map’ window.</p>
+                  </section>
+                  <section id="tabs-link-4" role="tabpanel" aria-hidden="true">
+                        <div class="splash-para-title">A Note on Map Data</div>
+                        <p class="splash-para">The Exploring Neighborhood Change mapping series is a prototype using datasets compiled from the U.S. Census Bureau, the National Park Service, New York City Open Data and the University of Richmond’s Digital Scholarship Lab. The primary dataset featured is derived from a research project from 2018 that seeded this campaign, which focused on measuring residential change between 2009 and 2016. As such, data in this initial prototype is limited to residential data. This tool will continue to evolve and build upon this initial dataset, along with the broader campaign. We are still testing aspects of the research product including planned data updates and integration of additional layers. All information presented herein is publicly available.</p>
+ 
+                  </section>
+               </div>
+            </section>
+            <div id="splashLogo">
+                <a href="https://savingplaces.org/african-american-cultural-heritage" target="_blank"><img src="img\NTHP_AACHAF_LOGO_4C.png" style="max-width:235px;"></a>
+            </div>
+            <div id="splashLogoSmall">
+                <a href="https://savingplaces.org/african-american-cultural-heritage" target="_blank"><img src="img/NTHP_LOGO_RGB_noTAG.png" style="max-width:140px;"></a>
+            </div>
+            <button class="splashClose" id="button-1"><div id="slide"></div>
+    <a class="buttonText">Explore the Map</a></button>
+            <!--<div id="checkBox">
+                <label class="containerCheck">
+                    <input type="checkbox" id="cookieToggle">
+                    <span class='checkmark'></span>
+                    <span class='checkText'>Don't Show Again</span>
+                </label>
+            </div>-->      
+        </div>
+    </div>  
+     
+    <div class="navbar">
+        <div class="dots"><img src="img/Equity_Study_Dots.png" style="width:50px;"></div>
+        <div class="title">Exploring Neighborhood Change |</div><div class="sub-title">New York, New York</div>
+        <div class="title_small">Exploring Neighborhood Change | New York, NY</div>
+         
+        <div id="About" class="tutorial">About the Map</div>
+    </div>
+      
+    <div class="navbar-line"></div>  
+   
+  
+    <div id="menu">
+		<div>
+          <input type="checkbox" id="toggle">
+          <label for="toggle" class="toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+          </label>
+        </div>
+    </div> 
+      
+    <div id="Main-Div">
+        <div id="mainDivTitle">
+            <div class="logo-main"><a href="https://savingplaces.org/african-american-cultural-heritage" target="_blank"><img src="img/NTHP_AACHAF_LOGO_4C.png" style="width:265px;"></a></div>
+        </div>
+        
+            <div id="mainDivContainer">
+                <div class='topLine'></div>
+                <div class="header-text" style="padding-top: 5px;">Map Controls</div>
+                <div class="layer-container">
+                    <table style="width: 100%; padding-top: 7px">
+                        <tbody> 
+                            <tr><td width="90%" align="left"><h7>Census Tract Data (2009 - 2016)</h7></td></tr>
+                        </tbody>
+                    </table>
+                    <table id="layer-table" style="width: 100%; padding-top: 5px;">
+                        <tbody> 
+                            <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton1" checked><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>Population Data</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer created using U.S. Census Bureau data that includes details on race and population changes at the census tract level between 2009 and 2016. Layer symbolized to illustrate percent change in total population in each tract.</span></div></span></td>
+                                </tr>  
+                                <tr class="popChloro"><td width="100%" align="left" colspan="3" style="padding-top:0px"> 
+                                    <div class="head-container flex">
+                                            <div class="head-item flex-item" style="text-align: left;">Pop. Decrease <b>(-70%)</b></div>
+                                            <div class="head-item flex-item" style="text-align: right;">Pop. Increase <b>(+400%)</b></div>
+                                    </div>    
+                        
+                                    <div class="container flex">
+                                            <div class="item flex-item" style="background-color: #492900"></div>
+                                            <div class="item flex-item" style="background-color: #987100"></div>
+                                            <div class="item flex-item" style="background-color: #f5c236"></div>
+                                            <div class="item flex-item" style="background-color: #f5f5f5"></div>
+                                            <div class="item flex-item" style="background-color: #8fceff"></div>
+                                            <div class="item flex-item" style="background-color: #307cb4"></div>
+                                            <div class="item flex-item" style="background-color: #003464"></div>
+                                    </div>      
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton2"><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>Housing Data</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer created using U.S. Census Bureau data that includes details on race and population changes at the census tract level between 2009 and 2016. Layer symbolized to illustrate percent change in total population in each tract.</span></div></span></td>
+                                </tr>  
+                                <tr class="housChloro"><td width="90%" align="left" colspan="3" style="padding-top:0px"> 
+                                    <div class="head-container flex">
+                                            <div class="head-item flex-item" style="text-align: left;"># Unit Decrease <b>(-76%)</b></div>
+                                            <div class="head-item flex-item" style="text-align: right;"># Unit Increase <b>(+670%)</b></div>
+                                    </div>    
+                        
+                                    <div class="container flex">
+                                            <div class="item flex-item" style="background-color: #003753"></div>
+                                            <div class="item flex-item" style="background-color: #1781a1"></div>
+                                            <div class="item flex-item" style="background-color: #7fd4f7"></div>
+                                            <div class="item flex-item" style="background-color: #f5f5f5"></div>
+                                            <div class="item flex-item" style="background-color: #ff9d63"></div>
+                                            <div class="item flex-item" style="background-color: #d24915"></div>
+                                            <div class="item flex-item" style="background-color: #730000"></div>
+                                    </div>      
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton3"><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>Income Data</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer created using U.S. Census Bureau data that includes details on race and population changes at the census tract level between 2009 and 2016. Layer symbolized to illustrate percent change in total population in each tract.</span></div></span></td>
+                                </tr>  
+                                <tr class="incChloro"><td width="90%" align="left" colspan="3" style="padding-top:0px"> 
+                                    <div class="head-container flex">
+                                            <div class="head-item flex-item" style="text-align: left;">Inc. Decrease <b>(-56%)</b></div>
+                                            <div class="head-item flex-item" style="text-align: right;">Inc. Increase <b>(+520%)</b></div>
+                                    </div>    
+                        
+                                    <div class="container flex">
+                                            <div class="item flex-item" style="background-color: #202f49"></div>
+                                            <div class="item flex-item" style="background-color: #5d6a88"></div>
+                                            <div class="item flex-item" style="background-color: #a0adce"></div>
+                                            <div class="item flex-item" style="background-color: #f5f5f5"></div>
+                                            <div class="item flex-item" style="background-color: #43c1b8"></div>
+                                            <div class="item flex-item" style="background-color: #007b74"></div>
+                                            <div class="item flex-item" style="background-color: #003a36"></div>
+                                    </div>      
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <table id="layer-table" style="width: 100%; padding-top: 0px;">
+                            <tbody>
+                                <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton4" checked><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>African American Neighborhoods</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">African American neighborhoods defined by census tracts that have had a majority African American population in four of the last five decennial census counts.</span></div></span></td>
+                                </tr>  
+                                <tr class="haan">
+                                    <td width="270px" align="left" colspan="2" style="padding-left: 0px">
+                                        <span class="haanBounds"></span>
+                                        <span class="legendText">Neighborhood Boundary</span>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>          
+                </div>
+                <hr>
+                
+                <table style="width: 100%; padding-top: 0px; padding-bottom: 7px;">
+                        <tbody> 
+                            <tr><td width="100%" align="left"><h7>Context Data</h7></td></tr>
+                        </tbody>
+                </table>
+                    <div class="accordion-container">
+                      <div class="accordion">
+                        <table style="width: 100%; padding-top: 0px">
+                            <tbody> 
+                                <tr><td width="90%" style="padding-left:0px"><h4>City Layers</h4></td><td width="10%" align="center" style="padding-top: 2px"><i class="fas fa-angle-double-right rotate rotate"></i></td></tr>
+                             </tbody>
+                          </table>
+                      </div>
+                      <div class="accordion-panel">
+                          <table id="layer-table" style="width: 100%; padding-top: 5px; padding-bottom: 10px;">
+                            <tbody>
+                                <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton5"><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>Zoning Districts</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer depicting New York City zoning and special purpose district boundaries symbolized by each zoning district's general use.</span></div></span></td>
+                                </tr>  
+                                <tr class="zone">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 5px; padding-bottom: 0px">
+                                    <ol class="zoneLeg">
+                                      <li class='legend'>Residential</li>
+                                      <li class='legend'>Commercial</li>
+                                      <li class='legend'>Industrial</li>
+                                      <li class='legend'>Special District</li>
+                                    </ol>
+                                </td>    
+                                </tr>
+                                <tr>
+                                <td width="5%" style="padding-bottom: 3px" class="sdCheck">
+                                    <label class="containerCheck">
+                                      <input type="checkbox" id="layerButtonSd" checked>
+                                      <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                <td width="95%" align="left" class="sdCheckText"><h6>Toggle Special Districts On / Off</h6></td>
+                                </tr>    
+                                <tr class="zoneFilterText">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 2px; padding-bottom: 0px">
+                                <h5>Filter Zoning Districts</h5>
+                                </td>
+                                </tr>    
+                                <tr class="zoneFilter">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 5px">
+                                    <div id="filter-div">
+                                        <select id="zoneFilter" required="required" class="dropdownDisp">
+                                            <option value="" selected>All Zoning Districts</option>
+                                            <option value="Residential">Residential</option>
+                                            <option value="Commercial">Commercial</option>
+                                            <option value="Industrial">Industrial</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                </tr>   
+                                <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton6"><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>NYC Neighborhoods</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Layer depicting the boundaries of New York City neighborhoods.</span></div></span></td>
+                                </tr>  
+                                <tr class="neighbor">
+                                    <td width="290px" align="left" colspan="3" style="padding-top: 3px; padding-bottom: 3px">
+                                        <span class="neighBounds"></span>
+                                        <span class="legendText">Neighborhood Boundary</span>
+                                    </td>
+                                </tr>
+                                <tr class="neighSearchText">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 0px">
+                                <h5>Search Neighborhoods</h5>
+                                </td>
+                                </tr>
+                                <tr class="neighSearch">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 5px">
+                                    <div id="neighborSearch" width="100%" align="left" style="padding: 2px"></div>
+                                </td>
+                                </tr>        
+                                <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton7"><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>MTA Subway Lines</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Point and line data layer showing the location of Metropolitan Transportation Authority (MTA) subway lines and stations.</span></div></span></td>
+                                </tr>
+                                <tr class="mta">
+                                    <td width="290px" align="left" colspan="2" style="padding-top: 3px; padding-bottom: 3px">
+                                        <ol class="mtaleg">
+                                          <li class='legend3'>Station</li>
+                                          <li class='legend3'>Line</li>    
+                                        </ol>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton8"><span class="slider"></span></label></td>
+                                <td width="75%" align="left"><h5>Colleges & Universities</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Point data layer showing the location of institutions of higher education within New York City.</span></div></span></td>
+                                </tr>  
+                                <tr class="coll">
+                                    <td width="290px" align="left" colspan="2" style="padding-left: 3px; padding-top: 3px; padding-bottom: 3px">
+                                        <span class="collUniv"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                      </table>  
+                      </div>
+                    </div>
+                    <div class="accordion-container">
+                      <div class="accordion">
+                        <table style="width: 100%; padding-top: 0px">
+                            <tbody> 
+                                <tr><td width="90%" style="padding-left:0px"><h4>Development Layers</h4></td><td width="10%" align="center" style="padding-top: 2px"><i class="fas fa-angle-double-right rotate rotate"></i></td></tr>
+                             </tbody>
+                          </table>
+                      </div>
+                      <div class="accordion-panel">
+                        <table id="layer-table" style="width: 100%; padding-top: 5px; padding-bottom: 10px;">
+                            <tbody>
+                            <tr>
+                            <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton9"><span class="slider"></span></label></td>
+                            <td width="75%" align="left"><h5>Fed. Historic Tax Credit Projects</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Point data layer representing <a href="https://www.nps.gov/tps/tax-incentives.htm" target="_blank">Federal Historic Preservation Tax Credit</a> projects completed in New York City between 2009 and 2016.</span></div></span></td>
+                            </tr>  
+                            <tr class="htc">
+                                <td width="290px" align="left" colspan="2" style="padding-top: 3px; padding-bottom: 3px">
+                                    <ol class="htcleg">
+                                      <li class='legend2'>Housing</li>
+                                      <li class='legend2'>Multi-Use</li>
+                                      <li class='legend2'>Commercial</li>
+                                      <li class='legend2'>Office</li>
+                                      <li class='legend2'>Hotel</li>
+                                      <li class='legend2'>Other</li>
+                                      <li class='legend2'>Not Reported</li>    
+                                    </ol>
+                                </td>
+                            </tr>      
+                            <tr>
+                            <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton10"><span class="slider"></span></label></td>
+                            <td width="75%" align="left"><h5>Demolition Permits</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer illustrating demolition permits granted in New York City between 2009 and 2016. The data is clustered at higher zoom levels. Zoom in to view individual points and view popup for permit information.</span></div></span></td>
+                            </tr>   
+                            <tr class="demoAll">
+                                <td class='demo' width="290px" align="left" colspan="3" style="padding-top: 3px; padding-bottom: 3px">
+                                    <span class="demoSym"></span>
+                                    <span class="legendText">Permit Location</span>
+                                </td>
+                            <!--</tr>
+                            <tr class="demoCluster">-->
+                                <td class="demoCluster" width="290px" align="left" colspan="3" style="padding-top: 3px; padding-bottom: 3px">
+                                    <span class="demoClust">23</span>
+                                    <span class="legendText">Permit Cluster</span>
+                                </td>
+                            </tr>
+                        </table>
+                      </div>
+                    </div>       
+                    <div class="accordion-container">
+                      <div class="accordion">
+                        <table style="width: 100%; padding-top: 0px">
+                            <tbody> 
+                                <tr><td width="90%" style="padding-left:0px"><h4>Designation Layers</h4></td><td width="10%" align="center" style="padding-top: 2px"><i class="fas fa-angle-double-right rotate rotate"></i></td></tr>
+                             </tbody>
+                          </table>
+                      </div>
+                      <div class="accordion-panel">
+                        <table id="layer-table" style="width: 100%; padding-top: 5px; padding-bottom: 10px;">
+                            <tbody>    
+                            <tr>
+                            <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton11"><span class="slider"></span></label></td>
+                            <td width="75%" align="left"><h5>Local Historic Districts</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer representing the boundaries of all New York City historic districts designated before 2017.</span></div></span></td>
+                            </tr>  
+                            <tr class="locHd">
+                                <td width="290px" align="left" colspan="2" style="padding-top: 3px; padding-bottom: 3px">
+                                    <span class="locHdBounds"></span>  
+                                </td>
+                            </tr>
+                            <tr class="locHDSearchText">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 3px; padding-bottom: 0px">
+                                <h5>Search Local Historic Districts</h5>
+                                </td>
+                            </tr>
+                            <tr class="locHdSearch">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 5px">
+                                    <div id="locHdSearch" width="100%" align="left" style="padding: 2px"></div>   
+                                </td>
+                            </tr>    
+                            <tr>
+                            <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton12"><span class="slider"></span></label></td>
+                            <td width="75%" align="left"><h5>Nat. Register Historic Sites</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer representing all sites listed on the National Register of Historic Places before 2017.</span></div></span></td>
+                            </tr> 
+                            <tr class="nrSite">
+                                <td width="290px" align="left" colspan="2" style="padding-top: 3px; padding-bottom: 3px">
+                                      <img src="img/icons/triangle.png" style="width:16px;">    
+                                </td>
+                            </tr>    
+                            <tr>
+                            <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton13"><span class="slider"></span></label></td>
+                            <td width="75%" align="left"><h5>Nat. Register Historic Districts</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">Data layer representing the boundaries of all listed National Register of Historic Places historic districts, regardless of designation date, within New York City.</span></div></span></td>
+                            </tr>  
+                            <tr class="nrHd">
+                                <td width="290px" align="left" colspan="2" style="padding-top: 3px; padding-bottom: 3px">
+                                    <span class="nrHdBounds"></span>
+                                </td>
+                            </tr>    
+                            <tr class="nrHDSearchText">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 3px; padding-bottom: 0px">
+                                <h5>Search National Register Historic Districts</h5>
+                                </td>
+                            </tr>
+                            <tr class="nrHDSearch">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 5px">
+                                    <div id="nrHDSearch" width="100%" align="left" style="padding: 2px"></div>   
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  <!--<hr>-->
+                    <div class="accordion-container">
+                      <div class="accordion">
+                        <table style="width: 100%;">
+                            <tbody> 
+                                <tr><td width="90%" style="padding-left:0px"><h4>Historic Layers</h4></td><td width="10%" align="center" style="padding-top: 2px"><i class="fas fa-angle-double-right rotate"></i></td></tr>
+                             </tbody>
+                          </table>
+                      </div>
+                      <div class="accordion-panel">
+                        <table id="layer-table" style="width: 100%; padding-top: 5px; padding-bottom: 10px;">
+                            <tbody>  
+                            <tr>
+                            <td width="15%" style="padding-bottom: 3px"><label class="switch"><input type="checkbox" id="layerButton14"><span class="slider"></span></label></td>
+                            <td width="75%" align="left"><h5>HOLC Boundaries (1935-1940)</h5></td><td width="10%" align="right" style="padding-bottom:2px; padding-right:0px; padding-top: 2px"><span><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext"><a href="https://ncrc.org/holc/" target="_blank">Home Owner's Loan Corporation (HOLC)</a> boundaries created between 1935 and 1940 illustrating all HOLC Grades.</span></div></span></td>
+                            </tr>
+                            <tr class="holc">
+                                <td width="100%" align="left" colspan="3" style="padding-top: 5px; padding-bottom: 0px">
+                                    <ol class="holcLeg">
+                                      <li class='hlegend'>Grade A</li>
+                                      <li class='hlegend'>Grade B</li>
+                                      <li class='hlegend'>Grade C</li>
+                                      <li class='hlegend'>Grade D</li>
+                                    </ol>
+                                </td>
+                            </tr>    
+                            <tr class="holcFilterText">
+                            <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 0px">
+                            <h5>Filter HOLC Boundaries</h5>
+                            </td>
+                            </tr>    
+                            <tr class="holcFilter">
+                            <td width="100%" align="left" colspan="3" style="padding-top: 0px; padding-bottom: 5px">
+                                <div id="filter-div">
+                                    <select id="holcFilter" class="dropdownDisp">
+                                        <option value="" selected>All HOLC Grades</option>
+                                        <option value="A">Grade A "Best"</option>
+                                        <option value="B">Grade B "Still Desirable"</option>
+                                        <option value="C">Grade C "Definitely Declining"</option>
+                                        <option value="D">Grade D "Hazardous"</option>
+                                    </select>
+                                </div>
+                            </td>
+                            </tr>    
+                            </tbody>
+                        </table>  
+                      
+                    </div>
+                    <hr style="margin: 18px 0 10px 0;">    
+                        <table style="width: 100%; padding-top: 0px; padding-bottom: 3px;">
+                            <tbody> 
+                                <tr>
+                                    <td width="100%" align="left"><h7>Layer Opacity</h7></td>
+                                </tr>
+                                <tr>
+                                    <td width="95%" align="left">   
+                                    <select id="opacFilter" class="dropdown">
+                                        <option value="select" selected>Select a Layer</option>
+                                        <option value="popTracts">Population Data</option>
+                                        <option value="housingTracts">Housing Data</option>
+                                        <option value="incomeTracts">Income Data</option>
+                                        <option value="haan">African American Neighborhoods</option>
+                                        <option value="zoningBounds">Zoning Districts</option>
+                                        <option value="demoPermits">Demolition Permits</option>
+                                        <option value="localHd">Local Historic Districts</option>
+                                        <option value="nrhpSites">National Register Historic Sites</option>
+                                        <option value="nrhpHd">National Register Historic Districts</option>
+                                        <option value="redLine">HOLC Boundaries</option>
+                                        <option value="allNeighbor">New York City Neighborhoods</option>
+                                        <option value="ctaLines">MTA Subway Lines</option>
+                                    </select>  
+                                    </td>
+                                    <td width="5%" align="left">
+                                        <span class="help"><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px"></i><span class="tooltiptext">To change layer opacity, select a layer from the dropdown list. Next, adjust the layer's opacity using the range slider to the left. Press the reset button below to reset all layers to their default opacity.</span></div></span>
+                                    </td>
+                                </tr>    
+                            </tbody>
+                        </table>            
+                        <div class="range-slider">
+                            <input id="slider1" class="input-range" type="range" value="50" min="0" max="100">
+                            <span id="rangeValue" class="range-value"></span>
+                            <button class="opacReset" id="button-2"><div id="slide"></div>
+                            <a class="opacText">Reset</a></button>
+                        </div>
+                    <hr style="margin: 18px 0 10px 0;">    
+                        <table style="width: 100%;">
+                            <tbody> 
+                                <tr><td width="90%" align="left"><h7>Find an Address</h7></td></tr>
+                            </tbody>
+                        </table>
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr class="addSearch">
+                                    <td width="95%" align="left">
+                                        <div id="addSearch" width="100%" align="left" style="padding: 2px"></div>
+                                    </td>
+                                    <td width="5%" align="left">
+                                        <span class="help"><div class="tooltip"><i class="fa fa-question-circle" style="font-size:12px; padding-bottom: 3px;"></i><span class="tooltiptext">Enter an address into the search box and select the desired address from the suggestion box. The application will zoom to the selected address and mark it with a black point.</span></div></span>
+                                    </td>    
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>                    
+            </div>
+        </div>
+            
+       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>   
+    <script src="https://js.arcgis.com/4.16/"></script>
+    <script src="js/script.js">
+    </script>
+      
+  </body>
+</html>
